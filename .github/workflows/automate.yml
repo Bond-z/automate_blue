@@ -21,7 +21,8 @@ jobs:
 
       - name: execute test 01
         run: |
-          robot -i func -d report/ -o "output_01.xml" testcases/*/*.robot
+          robot -i func -d report/ -o "output_01.xml" testcases/func1/*.robot
+          robot -i func -d report/ -o "output_02.xml" testcases/func2/*.robot
            
       # - name: execute test 02
       #   run: | 
@@ -30,5 +31,5 @@ jobs:
 
       - name: merge logs
         run: |
-          rebot -d report/ -o "output_pub.xml" -l "log_pub.html" -r "report_pub.html" --merge report/output_01.xml
+          rebot -d report/ -o "output_pub.xml" -l "log_pub.html" -r "report_pub.html" --merge report/output_01.xml report/output_02.xml
          
