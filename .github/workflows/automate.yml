@@ -3,7 +3,7 @@ name: robot framework cicd
 on: [push]
 
 jobs:
-  build:
+  build & test:
     runs-on: windows-latest
     steps:
       - name: checkout repo content
@@ -19,10 +19,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-  tests:
-    needs: build
-    runs-on: windows-latest
-    steps:
       - name: execute test 01
         run: |
           robot -i func -d report/ -o "output_tmp.xml" testcases/func01/*.robot
@@ -31,3 +27,8 @@ jobs:
       - name: execute test 02
         run: | 
           robot -i func -d report/ -o "output_tmp.xml" testcases/func02/*.robot
+
+
+    #  - name: merge logs
+    #     run: |
+    #       - rebot --nostatusrc -N "Output" -o "output.xml" -l "log.html" -r "report.html" -d public p
