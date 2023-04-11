@@ -19,16 +19,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: execute test
+      - name: execute test 01
         run: |
-          robot -i func -d report/ -o "output_tmp.xml" testcases/func01/*.robot
+          robot -i func -d report/ -o "output_01.xml" testcases/func01/*.robot
            
+      - name: execute test 02
+        run: | 
+          robot -i func -d report/ -o "output_02.xml" testcases/func02/*.robot
 
-      # - name: execute test 02
-      #   run: | 
-      #     robot -i func -d report/ -o "output_tmp.xml" testcases/func02/*.robot
 
-
-    #  - name: merge logs
-    #     run: |
-    #       - rebot --nostatusrc -N "Output" -o "output.xml" -l "log.html" -r "report.html" -d public p
+     - name: merge logs
+        run: |
+          - rebot -N "Output" -o "output_pub.xml" -l "log.html" -r "report.html" -d report output_01.xml public output_02.xml
