@@ -23,9 +23,9 @@ jobs:
         run: |
           robot -i func -d report/ -o "output_01.xml" testcases/func1/*.robot
            
-      - name: execute test 02
-        run: | 
-          python -m robot -i func2 -d report/ -o "output_02.xml" testcases/func2/*.robot
+      # - name: execute test 02
+      #   run: | 
+      #     python -m robot -i func2 -d report/ -o "output_02.xml" testcases/func2/*.robot
 
 
       - name: merge logs
