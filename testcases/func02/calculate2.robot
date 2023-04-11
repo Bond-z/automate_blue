@@ -1,5 +1,5 @@
 *** Settings ***
-Resource   ${CURDIR}/../import.robot
+Resource   ${CURDIR}/../../import.robot
 
 *** Test Cases ***
 This Testcase Should Be True
