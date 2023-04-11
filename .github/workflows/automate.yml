@@ -21,13 +21,12 @@ jobs:
 
   tests:
     runs-on: windows-latest
-      steps:
-        - name: execute test 01
-          run: |
-            robot -i func -d report/ -o "output_tmp.xml" testcases/func01/*.robot
+    steps:
+      - name: execute test 01
+        run: |
+          robot -i func -d report/ -o "output_tmp.xml" testcases/func01/*.robot
            
 
-        - name: execute test 02
-          run: |
-            
-            robot -i func -d report/ -o "output_tmp.xml" testcases/func02/*.robot
+      - name: execute test 02
+        run: | 
+          robot -i func -d report/ -o "output_tmp.xml" testcases/func02/*.robot
