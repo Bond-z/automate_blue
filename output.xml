@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.1 (Python 3.8.10 on darwin)" generated="20220804 00:46:57.995" rpa="false" schemaversion="2">
+<suite id="s1" name="Test Keyword" source="/Users/nathakrit/Documents/automated/test_keyword.robot">
+<test id="s1-t1" name="Get sku">
+<kw name="Remove String" library="String">
+<var>${var}</var>
+<arg>@{sku}</arg>
+<arg>[</arg>
+<arg>]</arg>
+<arg>,</arg>
+<arg>'</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<msg timestamp="20220804 00:46:58.484" level="INFO">${var} = SSP63212716 SSP60086013</msg>
+<status status="PASS" starttime="20220804 00:46:58.483" endtime="20220804 00:46:58.484"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${index}</var>
+<arg>@{var}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20220804 00:46:58.484" level="FAIL">Value of variable '@{var}' is not list or list-like.</msg>
+<status status="FAIL" starttime="20220804 00:46:58.484" endtime="20220804 00:46:58.484"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${i}</var>
+<value>${index}</value>
+<iter>
+<var name="${i}">${i}</var>
+<kw name="Set Variable" library="BuiltIn">
+<var>${item}</var>
+<arg>${var}[${i}]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20220804 00:46:58.485" endtime="20220804 00:46:58.485"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${item}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220804 00:46:58.485" endtime="20220804 00:46:58.485"/>
+</kw>
+<status status="NOT RUN" starttime="20220804 00:46:58.485" endtime="20220804 00:46:58.485"/>
+</iter>
+<status status="NOT RUN" starttime="20220804 00:46:58.485" endtime="20220804 00:46:58.485"/>
+</for>
+<tag>sku</tag>
+<status status="FAIL" starttime="20220804 00:46:58.483" endtime="20220804 00:46:58.485">Value of variable '@{var}' is not list or list-like.</status>
+</test>
+<kw name="Close Window" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes currently opened and selected browser window/tab.</doc>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220804 00:46:58.487" level="INFO">Cannot capture screenshot because no browser is open.</msg>
+<status status="PASS" starttime="20220804 00:46:58.486" endtime="20220804 00:46:58.487"/>
+</kw>
+<msg timestamp="20220804 00:46:58.487" level="FAIL">No browser is open.</msg>
+<status status="FAIL" starttime="20220804 00:46:58.486" endtime="20220804 00:46:58.487">No browser is open.</status>
+</kw>
+<status status="FAIL" starttime="20220804 00:46:57.997" endtime="20220804 00:46:58.488">Suite teardown failed:
+No browser is open.</status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">sku</stat>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Test Keyword">Test Keyword</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

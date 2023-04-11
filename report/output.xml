@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot rpa="false" generated="20230411 14:25:10.867" generator="Robot 3.2.2 (Python 2.7.10 on darwin)">
+<suite source="/Users/bond/Documents/BluePi_AutomatedTest/testcases/func01/calculate1.robot" id="s1" name="Calculate1">
+<test id="s1-t1" name="Testcase 01">
+<kw name="Convert To Number" library="BuiltIn">
+<doc>Converts the given item to a floating point number.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20230411 14:25:10.906" level="INFO">${output} = 5.0</msg>
+<status status="PASS" endtime="20230411 14:25:10.906" starttime="20230411 14:25:10.905"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<arguments>
+<arg>3 + 2</arg>
+</arguments>
+<assign>
+<var>${number}</var>
+</assign>
+<msg timestamp="20230411 14:25:10.907" level="INFO">${number} = 5</msg>
+<status status="PASS" endtime="20230411 14:25:10.907" starttime="20230411 14:25:10.906"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>${number}</arg>
+</arguments>
+<msg timestamp="20230411 14:25:10.908" level="INFO">Argument types are:
+&lt;type 'float'&gt;
+&lt;type 'int'&gt;</msg>
+<status status="PASS" endtime="20230411 14:25:10.908" starttime="20230411 14:25:10.907"></status>
+</kw>
+<tags>
+<tag>1_1</tag>
+<tag>func</tag>
+</tags>
+<status status="PASS" endtime="20230411 14:25:10.908" critical="yes" starttime="20230411 14:25:10.904"></status>
+</test>
+<test id="s1-t2" name="Testcase 02">
+<kw name="Convert To Number" library="BuiltIn">
+<doc>Converts the given item to a floating point number.</doc>
+<arguments>
+<arg>10</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20230411 14:25:10.910" level="INFO">${output} = 10.0</msg>
+<status status="PASS" endtime="20230411 14:25:10.910" starttime="20230411 14:25:10.910"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<arguments>
+<arg>4 + 6</arg>
+</arguments>
+<assign>
+<var>${number}</var>
+</assign>
+<msg timestamp="20230411 14:25:10.911" level="INFO">${number} = 10</msg>
+<status status="PASS" endtime="20230411 14:25:10.911" starttime="20230411 14:25:10.911"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>${number}</arg>
+</arguments>
+<msg timestamp="20230411 14:25:10.912" level="INFO">Argument types are:
+&lt;type 'float'&gt;
+&lt;type 'int'&gt;</msg>
+<status status="PASS" endtime="20230411 14:25:10.912" starttime="20230411 14:25:10.911"></status>
+</kw>
+<tags>
+<tag>1_2</tag>
+<tag>func</tag>
+</tags>
+<status status="PASS" endtime="20230411 14:25:10.912" critical="yes" starttime="20230411 14:25:10.909"></status>
+</test>
+<status status="PASS" endtime="20230411 14:25:10.913" starttime="20230411 14:25:10.870"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="2">Critical Tests</stat>
+<stat fail="0" pass="2">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">1_1</stat>
+<stat fail="0" pass="1">1_2</stat>
+<stat fail="0" pass="2">func</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Calculate1" pass="2">Calculate1</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20230411 14:25:10.903" level="ERROR">Error in file '/Users/bond/Documents/BluePi_AutomatedTest/testcases/func01/calculate1.robot' on line 2: Resource file '/Users/bond/Documents/BluePi_AutomatedTest/testcases/import.robot' does not exist.</msg>
+</errors>
+</robot>
