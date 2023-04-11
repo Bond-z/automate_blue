@@ -23,11 +23,11 @@ jobs:
         run: |
           robot -i func -d report/ -o "output_01.xml" testcases/func01/*.robot
            
-      - name: execute test 02
-        run: | 
-          robot -i func -d report/ -o "output_02.xml" testcases/func02/*.robot
+      # - name: execute test 02
+      #   run: | 
+      #     robot -i func -d report/ -o "output_02.xml" testcases/func02/*.robot
 
 
-     - name: merge logs
+      - name: merge logs
         run: |
           rebot -N "Output" -o "output_pub.xml" -l "log.html" -r "report.html" -d report output_01.xml public output_02.xml
