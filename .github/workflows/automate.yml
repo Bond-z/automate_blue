@@ -21,7 +21,7 @@ jobs:
 
       - name: execute test
         run: |
-          robot -i func -d report/ -o "output_tmp.xml" testcases/*/*.robot
+          python -m robot -i func -d report/ -o "output_tmp.xml" testcases/*/*.robot
            
 
       # - name: execute test 02
