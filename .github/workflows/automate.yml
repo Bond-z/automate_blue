@@ -3,7 +3,7 @@ name: robot framework cicd
 on: [push]
 
 jobs:
-  build_test:
+  build:
     runs-on: windows-latest
     steps:
       - name: checkout repo content
@@ -30,4 +30,4 @@ jobs:
 
      - name: merge logs
         run: |
-          - rebot -N "Output" -o "output_pub.xml" -l "log.html" -r "report.html" -d report output_01.xml public output_02.xml
+          rebot -N "Output" -o "output_pub.xml" -l "log.html" -r "report.html" -d report output_01.xml public output_02.xml
