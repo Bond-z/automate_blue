@@ -19,14 +19,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: execute test 01
+      - name: execute test
         run: |
-          robot -i func -d report/ -o "output_tmp.xml" testcases/func01/*.robot
+          robot -i func -d report/ -o "output_tmp.xml" testcases/*/*.robot
            
 
-      - name: execute test 02
-        run: | 
-          robot -i func -d report/ -o "output_tmp.xml" testcases/func02/*.robot
+      # - name: execute test 02
+      #   run: | 
+      #     robot -i func -d report/ -o "output_tmp.xml" testcases/func02/*.robot
 
 
     #  - name: merge logs
