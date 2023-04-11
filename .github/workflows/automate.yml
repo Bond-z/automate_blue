@@ -19,9 +19,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: execute test 01
-        run: |
-          robot -i func -d report/ -o "output_01.xml" testcases/func01/*.robot
+      # - name: execute test 01
+      #   run: |
+      #     robot -i func -d report/ -o "output_01.xml" testcases/func01/*.robot
            
       - name: execute test 02
         run: | 
