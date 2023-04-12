@@ -65,7 +65,6 @@ jobs:
 
     - name: merge logs
       run: |
-        ls public/
         rebot -d public -o "output_pub.xml" -l "log_pub.html" -r "report_pub.html" --merge -d public public/output_01.xml report/output_02.xml
     
     
