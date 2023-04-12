@@ -5,11 +5,12 @@ import pandas
 import os
 from dotenv import load_dotenv
 
-resource_path = '../test_result/output.xml'
+resource_path_01 = '../report/output_01.xml'
+resource_path_02 = '../report/output_02.xml'
 
 date_time = datetime.datetime.now()
 
-tree = ET.parse(resource_path)
+tree = ET.parse(resource_path_01)
 root = tree.getroot()
 
 def get_TestCaseName():
