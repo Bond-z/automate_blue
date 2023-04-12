@@ -39,7 +39,7 @@ jobs:
 
   test_func02:
     runs-on: windows-latest
-    needs: build
+    needs: [build, test_func01]
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
@@ -50,19 +50,24 @@ jobs:
       run: |
         robot -i two -d report/ -o "output_02.xml" testcases/func2/calculate2.robot
 
-  merge_log:
-    runs-on: windows-latest
-    needs: [build, test_func01, test_func02]
-    steps:
-    - uses: actions/checkout@v2
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-
     - name: merge logs
       run: |
         rebot -d report/ -o "output_pub.xml" -l "log_pub.html" -r "report_pub.html" --merge report/output_01.xml report/output_02.xml
+    
+
+  # merge_log:
+  #   runs-on: windows-latest
+  #   needs: [build, test_func01, test_func02]
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: Install dependencies
+  #     run: |
+  #       python -m pip install --upgrade pip
+  #       pip install -r requirements.txt
+
+  #   - name: merge logs
+  #     run: |
+  #       rebot -d report/ -o "output_pub.xml" -l "log_pub.html" -r "report_pub.html" --merge report/output_01.xml report/output_02.xml
     
     
     # - name: Send report to Slack
