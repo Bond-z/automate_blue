@@ -35,11 +35,12 @@ jobs:
     - name: Run tests
       run: |
         robot -i func -d report/ -o "output_01.xml" testcases/func1/*.robot
+        robot -i func -d report/ -o "output_02.xml" testcases/func2/*.robot
     
 
     - name: merge logs
       run: |
-        rebot --outputdir report --merge report/output_01.xml 
+        rebot -d report/ -o "output_pub.xml" -l "log_pub.html" -r "report_pub.html" --merge report/output_01.xml report/output_02.xml
 
     # - name: Send report to Slack
     #   if: always()
