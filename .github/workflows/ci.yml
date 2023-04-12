@@ -65,7 +65,7 @@ jobs:
 
     - name: merge logs
       run: |
-        rebot -d public -o "output_pub.xml" -l "log_pub.html" -r "report_pub.html" --merge -d public public/output_01.xml report/output_02.xml
+        rebot -d public -o "output_pub.xml" -l "log_pub.html" -r "report_pub.html" --merge -d public/output_01.xml public/output_02.xml
     
     
     # - name: Send report to Slack
