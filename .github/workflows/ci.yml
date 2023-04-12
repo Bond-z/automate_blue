@@ -36,7 +36,7 @@ jobs:
       run: |
         test_suites="robot -i func testcases/*/*.robot"
         output_logs="report"
-        for suite in $test_suites
+        for $suite in $test_suites
         do
           output_log=$(basename "$suite" .robot).xml
           robot --output $output_log $suite
