@@ -30,8 +30,7 @@ jobs:
         pip install -r requirements.txt
     - name: Run tests
       run: |
-        mkdir public
-        robot -i func -d public -o "output_01.xml" testcases/func1/*.robot
+        robot -i func -d report -o "output_01.xml" testcases/func1/*.robot
 
 
     # - name: merge logs
@@ -49,8 +48,7 @@ jobs:
         pip install -r requirements.txt
     - name: Run tests
       run: |
-        mkdir public
-        robot -i two -d public -o "output_02.xml" testcases/func2/calculate2.robot
+        robot -i two -d report -o "output_02.xml" testcases/func2/calculate2.robot
 
     
   merge_log:
@@ -65,7 +63,7 @@ jobs:
 
     - name: merge logs
       run: |
-        rebot -d public -o "output_pub.xml" -l "log_pub.html" -r "report_pub.html" --merge -d public/output_01.xml public/output_02.xml
+        rebot -d report -o "output_pub.xml" -l "log_pub.html" -r "report_pub.html" --merge -d report/output_01.xml report/output_02.xml
     
     
     # - name: Send report to Slack
