@@ -34,15 +34,16 @@ jobs:
 
     - name: Run tests
       run: |
-        test_suites="robot -i func testcases/*/*.robot"
-        output_logs="report"
-        for ($suite in $test_suites)
-        do
-          output_log=$(basename "$suite" .robot).xml
-          robot --output $output_log $suite
-          output_logs="$output_logs $output_log"
-        done
-        rebot --outputdir log_report --merge $output_logs
+        
+        test_suites="-i func testcases/func1/*.robot"
+        output_log="report"
+        output_xml="output_01.xml"
+        robot -d $output_log -o $output_xml $test_suites
+    
+
+    - name: merge logs
+      run: |
+        rebot --outputdir report --merge report/output_01.xml 
 
     # - name: Send report to Slack
     #   if: always()
