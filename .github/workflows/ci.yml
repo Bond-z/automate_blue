@@ -68,12 +68,6 @@ jobs:
         ls public/
         rebot -d report -o "output_pub.xml" -l "log_pub.html" -r "report_pub.html" --merge -d public public/output_01.xml report/output_02.xml
     
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 4701cddc1260f9a41b53a5883afafe924ed9937e
-    
     # - name: Send report to Slack
     #   if: always()
     #   uses: rtCamp/action-slack-notify@v3
