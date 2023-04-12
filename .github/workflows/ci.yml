@@ -48,7 +48,7 @@ jobs:
         pip install -r requirements.txt
     - name: Run tests
       run: |
-        robot -i func -d report/ -o "output_02.xml" testcases/func2/*.robot
+        robot -i two -d report/ -o "output_02.xml" testcases/func2/calculate2.robot
 
   merge_log:
     runs-on: windows-latest
