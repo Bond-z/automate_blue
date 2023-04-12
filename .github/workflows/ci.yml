@@ -34,8 +34,8 @@ jobs:
 
     - name: Run tests
       run: |
-        robot -i func -d report/ -o "output_01.xml" testcases/func1/*.robot
-        robot -i func -d report/ -o "output_02.xml" testcases/func2/*.robot
+        robot -i func -d report/ -o "output_01.xml" testcases/*/*.robot
+        
     
 
     - name: merge logs
