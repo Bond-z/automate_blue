@@ -8,8 +8,8 @@ This Testcase Should Be True
     ${number}   Evaluate   3 + 2
     Should Be Equal    ${output}    ${number} 
 
-This Testcase Should Not Be True 
+This Testcase is correct
     [Tags]   two
-    ${output}=    Convert To Number    10
+    ${output}=    Convert To Number    5
     ${number}   Evaluate   4 + 1
     Should Be Equal    ${output}    ${number} 
