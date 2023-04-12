@@ -39,7 +39,7 @@ jobs:
 
   test_func02:
     runs-on: windows-latest
-    needs: [build, test_func01]
+    needs: [build]
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
@@ -63,10 +63,13 @@ jobs:
 
     - name: merge logs
       run: |
-        rebot -d report -o "output_pub.xml" -l "log_pub.html" -r "report_pub.html" --merge -d report report/output_01.xml report/output_02.xml
+        mkdir public
+        mv report/* public/
+        ls public/
+        rebot -d report -o "output_pub.xml" -l "log_pub.html" -r "report_pub.html" --merge -d public public/output_01.xml report/output_02.xml
     
 
-  report:
+
     
     # - name: Send report to Slack
     #   if: always()
