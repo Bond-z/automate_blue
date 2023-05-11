@@ -30,7 +30,7 @@ jobs:
         pip install -r requirements.txt
     - name: Run tests
       run: |
-        robot -i func -d report -o "output_01.xml" testcases/func1/*.robot
+        robot -i func -d report/func_01 -o "output_01.xml" testcases/func1/calculate1.robot
 
 
     # - name: merge logs
@@ -48,22 +48,22 @@ jobs:
         pip install -r requirements.txt
     - name: Run tests
       run: |
-        robot -i two -d report -o "output_02.xml" testcases/func2/calculate2.robot
+        robot -i two -d report/func_02 -o "output_02.xml" testcases/func2/calculate2.robot
 
     
-  merge_log:
-    runs-on: windows-latest
-    needs: [build, test_func01, test_func02]
-    steps:
-    - uses: actions/checkout@v2
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+  # merge_log:
+  #   runs-on: windows-latest
+  #   needs: [build, test_func01, test_func02]
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: Install dependencies
+  #     run: |
+  #       python -m pip install --upgrade pip
+  #       pip install -r requirements.txt
 
-    - name: merge logs
-      run: |
-        rebot -d report -o "output_pub.xml" -l "log_pub.html" -r "report_pub.html" --merge report/output_01.xml
+  #   - name: merge logs
+  #     run: |
+  #       rebot -d report -o "output_pub.xml" -l "log_pub.html" -r "report_pub.html" --merge report/output_01.xml
     
   read_report:
     runs-on: windows-latest

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot rpa="false" generated="20230511 12:23:43.298" generator="Robot 3.2.2 (Python 2.7.10 on darwin)">
+<suite source="/Users/bond/Documents/automate_blue/testcases/func1/calculate1.robot" id="s1" name="Calculate1">
+<test id="s1-t1" name="Testcase 01 is correct">
+<kw name="Convert To Number" library="BuiltIn">
+<doc>Converts the given item to a floating point number.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20230511 12:23:43.738" level="INFO">${output} = 5.0</msg>
+<status status="PASS" endtime="20230511 12:23:43.738" starttime="20230511 12:23:43.737"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<arguments>
+<arg>4 + 1</arg>
+</arguments>
+<assign>
+<var>${number}</var>
+</assign>
+<msg timestamp="20230511 12:23:43.740" level="INFO">${number} = 5</msg>
+<status status="PASS" endtime="20230511 12:23:43.740" starttime="20230511 12:23:43.739"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>${number}</arg>
+</arguments>
+<msg timestamp="20230511 12:23:43.741" level="INFO">Argument types are:
+&lt;type 'float'&gt;
+&lt;type 'int'&gt;</msg>
+<status status="PASS" endtime="20230511 12:23:43.741" starttime="20230511 12:23:43.740"></status>
+</kw>
+<tags>
+<tag>func</tag>
+<tag>no1</tag>
+</tags>
+<status status="PASS" endtime="20230511 12:23:43.742" critical="yes" starttime="20230511 12:23:43.734"></status>
+</test>
+<test id="s1-t2" name="Testcase 02 is correct">
+<kw name="Convert To Number" library="BuiltIn">
+<doc>Converts the given item to a floating point number.</doc>
+<arguments>
+<arg>10</arg>
+</arguments>
+<assign>
+<var>${output}</var>
+</assign>
+<msg timestamp="20230511 12:23:43.745" level="INFO">${output} = 10.0</msg>
+<status status="PASS" endtime="20230511 12:23:43.745" starttime="20230511 12:23:43.744"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<arguments>
+<arg>5 + 5</arg>
+</arguments>
+<assign>
+<var>${number}</var>
+</assign>
+<msg timestamp="20230511 12:23:43.746" level="INFO">${number} = 10</msg>
+<status status="PASS" endtime="20230511 12:23:43.746" starttime="20230511 12:23:43.745"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${output}</arg>
+<arg>${number}</arg>
+</arguments>
+<msg timestamp="20230511 12:23:43.747" level="INFO">Argument types are:
+&lt;type 'float'&gt;
+&lt;type 'int'&gt;</msg>
+<status status="PASS" endtime="20230511 12:23:43.747" starttime="20230511 12:23:43.746"></status>
+</kw>
+<tags>
+<tag>func</tag>
+<tag>no2</tag>
+</tags>
+<status status="PASS" endtime="20230511 12:23:43.748" critical="yes" starttime="20230511 12:23:43.743"></status>
+</test>
+<status status="PASS" endtime="20230511 12:23:43.749" starttime="20230511 12:23:43.303"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="2">Critical Tests</stat>
+<stat fail="0" pass="2">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="2">func</stat>
+<stat fail="0" pass="1">no1</stat>
+<stat fail="0" pass="1">no2</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Calculate1" pass="2">Calculate1</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

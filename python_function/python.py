@@ -1,19 +1,23 @@
 import xml.etree.ElementTree as ET
 import datetime
 import time
-import pandas
+import pandas as pd
 import os
 from dotenv import load_dotenv
 
-resource_path_01 = '../report/output_01.xml'
-resource_path_02 = '../report/output_02.xml'
+resource_path_01 = '../report/func_01/output_01.xml'
+resource_path_02 = '../report/func_02/output_02.xml'
+
+paths = [resource_path_01, resource_path_02]
+file_name = ['func01', 'func02']
+index = 0
 
 date_time = datetime.datetime.now()
 
 tree = ET.parse(resource_path_01)
 root = tree.getroot()
 
-def get_TestCaseName():
+def get_TestCaseName(root):
 
     TestCaseName = [] 
     
@@ -24,7 +28,7 @@ def get_TestCaseName():
 
     return TestCaseName
 
-def get_Result():
+def get_Result(root):
     testcaseId = []
     result = []
 
@@ -46,7 +50,7 @@ def get_Result():
         except Exception as e:
             print('Error: ', str(e))
     
-    df = pandas.DataFrame(testcaseId, columns=['ID'])
+    df = pd.DataFrame(testcaseId, columns=['ID'])
     test_result = df.assign(Results = result)        
 
     return test_result
@@ -54,14 +58,34 @@ def get_Result():
 
 if __name__ == '__main__':
 
-    csv_file = 'report_' + str(date_time.strftime('%Y_%m_%d_%H_%M_%S')) + '.csv'
+    # csv_file = 'report_' + str(date_time.strftime('%Y_%m_%d_%H_%M_%S')) + '.csv'
     
-    testcase = get_TestCaseName()
-    result = get_Result()
+    # testcase = get_TestCaseName()
+    # result = get_Result()
 
-    print(result)
-    time.sleep(1)
-    result.insert(1, "Tese Cases", testcase, allow_duplicates=True)
-    result.sort_values(by=['ID'], axis=0, ascending=True)
-    result.to_csv(csv_file)
+    # print(result)
+    # time.sleep(1)
+    # result.insert(1, "Tese Cases", testcase, allow_duplicates=True)
+    # result.sort_values(by=['ID'], axis=0, ascending=True)
+    # result.to_csv(csv_file)
+
+    for file_path in paths:
+        file = file_name[index]
+        index = index + 1
+
+        data = ET.parse(file_path).getroot()
+        tree = ET.parse(file_path)
+        root = tree.getroot()
+
+        testcase = get_TestCaseName(root)
+        result = get_Result(root)
+
+        time.sleep(1)
+        result.insert(1, "Test Cases", testcase, allow_duplicates=True)
+        result.sort_values(by=['ID'], axis=0, ascending=True)
+
+        csv_file = './csv_report/output_' + file + '.csv'
+
+        result.to_csv(csv_file)
+        print(result)
     
