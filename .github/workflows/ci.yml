@@ -5,7 +5,7 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest      #windows-latest
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
     - name: setup python
@@ -18,7 +18,7 @@ jobs:
         pip install -r requirements.txt
 
   test_func01:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     needs: build
     steps:
     - uses: actions/checkout@v2
@@ -27,12 +27,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run tests
-      uses: joonvena/robotframework-docker-action@v0.1
-      env:
-        ROBOT_TESTS_DIR: ${{ github.workspace }}/testcases/func1/calculate1.robot
-        ROBOT_REPORTS_DIR: ${{ github.workspace }}/report/func_01
-#       run: |
-#         robot -i func -d report/func_01 -o "output_01.xml" testcases/func1/calculate1.robot
+      run: |
+        robot -i func -d report/func_01 -o "output_01.xml" testcases/func1/calculate1.robot
         
     - name: Upload test results
       uses: actions/upload-artifact@v1
@@ -47,7 +43,7 @@ jobs:
     #     rebot -d report/ -o "output_pub.xml" -l "log_pub.html" -r "report_pub.html" --merge report/output_01.xml report/output_02.xml
 
   test_func02:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     needs: [build]
     steps:
     - uses: actions/checkout@v2
@@ -56,12 +52,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run tests
-      uses: joonvena/robotframework-docker-action@v0.1
-      env:
-        ROBOT_TESTS_DIR: ${{ github.workspace }}/testcases/func1/calculate2.robot
-        ROBOT_REPORTS_DIR: ${{ github.workspace }}/report/func_02
-#       run: |
-#         robot -i two -d report/func_02 -o "output_02.xml" testcases/func2/calculate2.robot
+      run: |
+        robot -i two -d report/func_02 -o "output_02.xml" testcases/func2/calculate2.robot
         
     - name: Upload test results
       uses: actions/upload-artifact@v1
@@ -74,7 +66,7 @@ jobs:
   generate_report:
         if: always()
         needs: [test_func01, test_func02] 
-        runs-on: ubuntu-latest
+        runs-on: windows-latest
         steps:
         - name: Download reports
           uses: actions/download-artifact@v1
