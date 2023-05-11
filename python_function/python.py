@@ -73,8 +73,8 @@ if __name__ == '__main__':
         file = file_name[index]
         index = index + 1
 
-        data = ET.parse(file_path).getroot()
-        tree = ET.parse(data)
+        # data = ET.parse(file_path).getroot()
+        tree = ET.parse(file_path)
         root = tree.getroot()
 
         testcase = get_TestCaseName(root)
