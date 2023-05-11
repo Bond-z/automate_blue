@@ -82,7 +82,7 @@ jobs:
     - name: read report
       run: |
         python python_function/python.py
-        
+
     # - name: Send report to Slack
     #   if: always()
     #   uses: rtCamp/action-slack-notify@v3
