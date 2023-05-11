@@ -31,6 +31,13 @@ jobs:
     - name: Run tests
       run: |
         robot -i func -d report/func_01 -o "output_01.xml" testcases/func1/calculate1.robot
+        
+    - name: Result
+      uses: actions/upload-artifact@v1
+      if: always()
+      with:
+        name: reports
+        path: ${{ github.workspace }}/report
 
 
     # - name: merge logs
@@ -49,6 +56,13 @@ jobs:
     - name: Run tests
       run: |
         robot -i two -d report/func_02 -o "output_02.xml" testcases/func2/calculate2.robot
+        
+    - name: Result
+      uses: actions/upload-artifact@v1
+      if: always()
+      with:
+        name: reports
+        path: ${{ github.workspace }}/report
 
     
   # merge_log:
