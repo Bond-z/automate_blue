@@ -74,8 +74,8 @@ jobs:
             name: reports
         - name: Get Repository Owner & Name
           run: |
-            export OWNER="$(echo "${{ github.repository }}")"
-            export REPO="$(echo "${{ github.repository }}")"
+            export OWNER="$(echo "${{ github.owner}}")"
+            export REPO="$(echo "${{ github.repository}}")"
             echo "::set-env name=REPOSITORY_OWNER::$OWNER"
             echo "::set-env name=REPOSITORY_NAME::$REPO"
         - name: Send report to commit
