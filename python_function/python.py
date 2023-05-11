@@ -14,8 +14,8 @@ index = 0
 
 date_time = datetime.datetime.now()
 
-tree = ET.parse(resource_path_01)
-root = tree.getroot()
+# tree = ET.parse(resource_path_01)
+# root = tree.getroot()
 
 def get_TestCaseName(root):
 
@@ -74,7 +74,7 @@ if __name__ == '__main__':
         index = index + 1
 
         data = ET.parse(file_path).getroot()
-        tree = ET.parse(file_path)
+        tree = ET.parse(data)
         root = tree.getroot()
 
         testcase = get_TestCaseName(root)
