@@ -38,7 +38,7 @@ jobs:
       if: ${{ always() }}
       with:
         name: reports
-        path: report/func_01
+        path: python_function
 
 
     # - name: merge logs
@@ -63,7 +63,7 @@ jobs:
       if: ${{ always() }}
       with:
         name: reports
-        path: report/func_02
+        path: python_function
         
         
   # generate_report:
