@@ -97,6 +97,8 @@ jobs:
         - name: Commit Log Report
           uses: enriquesanchez/commit-log-report@v1.0.0
           with:
+            branch: regression
+          env:
             GH_ACCESS_TOKEN: ${{ secrets.TOKEN }}
             REPO_OWNER: ${{ env.REPOSITORY_OWNER }}
             COMMIT_SHA: ${{ github.sha }}
