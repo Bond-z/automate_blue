@@ -78,8 +78,8 @@ jobs:
 
         - name: Get Repository Owner & Name
           run: |
-            export OWNER="$(echo "${{github.repository_owner}}" | awk -F / '{print $3}')"
-            export REPO="$(echo "${{github.repository}}" | awk -F / '{print $3}')"
+            set OWNER="$(echo "${{github.repository_owner}}" | awk -F / '{print $3}')"
+            set REPO="$(echo "${{github.repository}}" | awk -F / '{print $3}')"
             echo "::set-env name=REPOSITORY_OWNER::$OWNER"
             echo "::set-env name=REPOSITORY_NAME::$REPO"
 
