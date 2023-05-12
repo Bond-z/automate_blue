@@ -29,9 +29,12 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+
     - name: Run tests
       run: |
-        robot -i func --outputdir report/func_01 -o "output_01.xml" testcases/func1/calculate1.robot
+        mkdir public
+        ls public/
+        robot -i func --outputdir public -o "output_01.xml" -r "report01.html" testcases/func1/calculate1.robot
         
     # - name: Upload test results
     #   uses: actions/upload-artifact@v1
@@ -40,21 +43,21 @@ jobs:
     #     name: reports
     #     path: python_function
 
-    - name: Generate HTML report
-      uses: robotframework/rebot@v1
-      with:
-        output: report_func01.html
-        output_dir: report
+    # - name: Generate HTML report
+    #   uses: robotframework/rebot@v1
+    #   with:
+    #     output: report_func01.html
+    #     output_dir: report
 
-    - name: Push report to repository
-      uses: ad-m/github-push-action@v0.6.0
-      with:
-        github_token: ${{ secrets.TOKEN }}
-        branch: regression
-        repository: ${{ env.REPOSITORY_NAME }}
-        directory: report
-        commit_message: Add Robot Framework HTML report
-        force: true
+    # - name: Push report to repository
+    #   uses: ad-m/github-push-action@v0.6.0
+    #   with:
+    #     github_token: ${{ secrets.TOKEN }}
+    #     branch: regression
+    #     repository: ${{ env.REPOSITORY_NAME }}
+    #     directory: report
+    #     commit_message: Add Robot Framework HTML report
+    #     force: true
 
     
 
@@ -74,7 +77,9 @@ jobs:
         pip install -r requirements.txt
     - name: Run tests
       run: |
-        robot -i two --outputdir report/func_02 -o "output_02.xml" testcases/func2/calculate2.robot
+        mkdir public
+        ls public/
+        robot -i two --outputdir public -o "output_02.xml" -r "report02.html" testcases/func2/calculate2.robot
         
     # - name: Upload test results
     #   uses: actions/upload-artifact@v1
@@ -83,21 +88,21 @@ jobs:
     #     name: reports
     #     path: python_function
 
-    - name: Generate HTML report
-      uses: robotframework/rebot@v1
-      with:
-        output: report_func02.html
-        output_dir: report
+    # - name: Generate HTML report
+    #   uses: robotframework/rebot@v1
+    #   with:
+    #     output: report_func02.html
+    #     output_dir: report
 
-    - name: Push report to repository
-      uses: ad-m/github-push-action@v0.6.0
-      with:
-        github_token: ${{ secrets.TOKEN }}
-        branch: regression
-        repository: ${{ env.REPOSITORY_NAME }}
-        directory: report
-        commit_message: Add Robot Framework HTML report
-        force: true
+    # - name: Push report to repository
+    #   uses: ad-m/github-push-action@v0.6.0
+    #   with:
+    #     github_token: ${{ secrets.TOKEN }}
+    #     branch: regression
+    #     repository: ${{ env.REPOSITORY_NAME }}
+    #     directory: report
+    #     commit_message: Add Robot Framework HTML report
+    #     force: true
     
         
         
