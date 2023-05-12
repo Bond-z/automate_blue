@@ -46,6 +46,16 @@ jobs:
         output: report_func01.html
         output_dir: report
 
+    - name: Push report to repository
+      uses: ad-m/github-push-action@v0.6.0
+      with:
+        github_token: ${{ secrets.TOKEN }}
+        branch: regression
+        repository: ${{ env.REPOSITORY_NAME }}
+        directory: report
+        commit_message: Add Robot Framework HTML report
+        force: true
+
     
 
 
@@ -78,6 +88,16 @@ jobs:
       with:
         output: report_func02.html
         output_dir: report
+
+    - name: Push report to repository
+      uses: ad-m/github-push-action@v0.6.0
+      with:
+        github_token: ${{ secrets.TOKEN }}
+        branch: regression
+        repository: ${{ env.REPOSITORY_NAME }}
+        directory: report
+        commit_message: Add Robot Framework HTML report
+        force: true
     
         
         
