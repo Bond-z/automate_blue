@@ -47,7 +47,7 @@ jobs:
     #   uses: robotframework/rebot@v1
     #   with:
     #     output: report_func01.html
-    #     output_dir: report
+    #     output_dir: public
 
     # - name: Push report to repository
     #   uses: ad-m/github-push-action@v0.6.0
@@ -106,15 +106,15 @@ jobs:
     
         
         
-  # generate_report:
-  #       if: always()
-  #       needs: [test_func01, test_func02] 
-  #       runs-on: windows-latest
-  #       steps:
-  #       - name: Download reports
-  #         uses: actions/download-artifact@v1
-  #         with:
-  #           name: reports
+  generate_report:
+        if: always()
+        needs: [test_func01, test_func02] 
+        runs-on: windows-latest
+        steps:
+        - name: Download reports
+          uses: actions/download-artifact@v1
+          with:
+            name: report
 
   #       - name: Get Repository Owner & Name
   #         run: |
@@ -122,6 +122,22 @@ jobs:
   #           set-env REPO="$(echo "${{github.repository}}" | awk -F / '{print $3}')"
   #           echo "::set-env name=REPOSITORY_OWNER::$OWNER"
   #           echo "::set-env name=REPOSITORY_NAME::$REPO"
+
+        - name: Generate HTML report
+          uses: robotframework/rebot@v1
+          with:
+            output: report.html
+            output_dir: public
+
+        - name: Push report to repository
+          uses: ad-m/github-push-action@v0.6.0
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            branch: regression
+            repository: Bond-z/automate_blue
+            directory: public
+            commit_message: Add Robot Framework HTML report
+            force: true
 
         # - name: Send report to commit
         #   uses: actions/upload-artifact@v1
