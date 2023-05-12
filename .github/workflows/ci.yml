@@ -97,9 +97,11 @@ jobs:
         - name: Commit Log Report
           uses: enriquesanchez/commit-log-report@v1.0.0
           with:
-            token: ${{ secrets.TOKEN }}
-            branch: regression
-            path: python_function
+            GH_ACCESS_TOKEN: ${{ secrets.TOKEN }}
+            REPO_OWNER: ${{ env.REPOSITORY_OWNER }}
+            COMMIT_SHA: ${{ github.sha }}
+            REPOSITORY: ${{ env.REPOSITORY_NAME }}
+            REPORT_PATH: report
 
     
   # merge_log:
