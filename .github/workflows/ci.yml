@@ -126,6 +126,10 @@ jobs:
         - name: Generate HTML report
           uses: robotframework/rebot@v1
           with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            branch: regression
+            repository: Bond-z/automate_blue
+            directory: public
             output: report.html
             output_dir: public
 
