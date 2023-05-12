@@ -5,8 +5,8 @@ import pandas as pd
 import os
 from dotenv import load_dotenv
 
-resource_path_01 = '../report/func_01/output_01.xml'
-resource_path_02 = '../report/func_02/output_02.xml'
+resource_path_01 = '../../report/func_01/output_01.xml'
+resource_path_02 = '../../report/func_02/output_02.xml'
 
 paths = [resource_path_01, resource_path_02]
 file_name = ['func01', 'func02']
