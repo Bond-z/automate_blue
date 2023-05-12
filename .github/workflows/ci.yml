@@ -31,7 +31,7 @@ jobs:
         pip install -r requirements.txt
     - name: Run tests
       run: |
-        robot -i func -d report/func_01 -o "output_01.xml" testcases/func1/calculate1.robot
+        robot -i func -d python_function -o "output_01.xml" testcases/func1/calculate1.robot
         
     - name: Upload test results
       uses: actions/upload-artifact@v1
@@ -56,7 +56,7 @@ jobs:
         pip install -r requirements.txt
     - name: Run tests
       run: |
-        robot -i two -d report/func_02 -o "output_02.xml" testcases/func2/calculate2.robot
+        robot -i two -d python_function -o "output_02.xml" testcases/func2/calculate2.robot
         
     - name: Upload test results
       uses: actions/upload-artifact@v1
