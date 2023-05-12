@@ -31,14 +31,14 @@ jobs:
         pip install -r requirements.txt
     - name: Run tests
       run: |
-        robot -i func -d ${{ github.workspace }}/report/func_01 -o "output_01.xml" ${{ github.workspace }}/testcases/func1/calculate1.robot
+        robot -i func -d report/func_01 -o "output_01.xml" testcases/func1/calculate1.robot
         
     - name: Upload test results
       uses: actions/upload-artifact@v1
       if: ${{ always() }}
       with:
         name: reports
-        path: ${{ github.workspace }}/report/func_01
+        path: report/func_01
 
 
     # - name: merge logs
@@ -56,14 +56,14 @@ jobs:
         pip install -r requirements.txt
     - name: Run tests
       run: |
-        robot -i two -d ${{ github.workspace }}/report/func_02 -o "output_02.xml" ${{ github.workspace }}/testcases/func2/calculate2.robot
+        robot -i two -d report/func_02 -o "output_02.xml" testcases/func2/calculate2.robot
         
     - name: Upload test results
       uses: actions/upload-artifact@v1
       if: ${{ always() }}
       with:
         name: reports
-        path: ${{ github.workspace }}/report/func_02
+        path: report/func_02
         
         
   # generate_report:
@@ -128,7 +128,7 @@ jobs:
 
     - name: read report
       run: |
-        python ${{ github.workspace }}/python_function/python.py
+        python python_function/python.py
 
     # - name: Send report to Slack
     #   if: always()
