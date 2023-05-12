@@ -31,11 +31,11 @@ jobs:
         pip install -r requirements.txt
     - name: Run tests
       run: |
-        robot -i func -d report/func_01 -o "output_01.xml" testcases/func1/calculate1.robot
+        robot -i func -d ${{ github.workspace }}/report/func_01 -o "output_01.xml" ${{ github.workspace }}/testcases/func1/calculate1.robot
         
     - name: Upload test results
       uses: actions/upload-artifact@v1
-      if: always()
+      if: ${{ always() }}
       with:
         name: reports
         path: ${{ github.workspace }}/report/func_01
@@ -56,41 +56,41 @@ jobs:
         pip install -r requirements.txt
     - name: Run tests
       run: |
-        robot -i two -d report/func_02 -o "output_02.xml" testcases/func2/calculate2.robot
+        robot -i two -d ${{ github.workspace }}/report/func_02 -o "output_02.xml" ${{ github.workspace }}/testcases/func2/calculate2.robot
         
     - name: Upload test results
       uses: actions/upload-artifact@v1
-      if: always()
+      if: ${{ always() }}
       with:
         name: reports
         path: ${{ github.workspace }}/report/func_02
         
         
-  generate_report:
-        if: always()
-        needs: [test_func01, test_func02] 
-        runs-on: windows-latest
-        steps:
-        - name: Download reports
-          uses: actions/download-artifact@v1
-          with:
-            name: reports
+  # generate_report:
+  #       if: always()
+  #       needs: [test_func01, test_func02] 
+  #       runs-on: windows-latest
+  #       steps:
+  #       - name: Download reports
+  #         uses: actions/download-artifact@v1
+  #         with:
+  #           name: reports
 
-        - name: Get Repository Owner & Name
-          run: |
-            set OWNER="$(echo "${{github.repository_owner}}" | awk -F / '{print $3}')"
-            set REPO="$(echo "${{github.repository}}" | awk -F / '{print $3}')"
-            echo "::set-env name=REPOSITORY_OWNER::$OWNER"
-            echo "::set-env name=REPOSITORY_NAME::$REPO"
+  #       - name: Get Repository Owner & Name
+  #         run: |
+  #           set-env OWNER="$(echo "${{github.repository_owner}}" | awk -F / '{print $3}')"
+  #           set-env REPO="$(echo "${{github.repository}}" | awk -F / '{print $3}')"
+  #           echo "::set-env name=REPOSITORY_OWNER::$OWNER"
+  #           echo "::set-env name=REPOSITORY_NAME::$REPO"
 
-        - name: Send report to commit
-          uses: actions/upload-artifact@v1
-          env:
-            GH_ACCESS_TOKEN: ${{ secrets.TOKEN }}
-            REPO_OWNER: ${{ env.REPOSITORY_OWNER }}
-            COMMIT_SHA: ${{ github.sha }}
-            REPOSITORY: ${{ env.REPOSITORY_NAME }}
-            REPORT_PATH: report
+  #       - name: Send report to commit
+  #         uses: actions/upload-artifact@v1
+  #         env:
+  #           GH_ACCESS_TOKEN: ${{ secrets.TOKEN }}
+  #           REPO_OWNER: ${{ env.REPOSITORY_OWNER }}
+  #           COMMIT_SHA: ${{ github.sha }}
+  #           REPOSITORY: ${{ env.REPOSITORY_NAME }}
+  #           REPORT_PATH: report
 
     
   # merge_log:
@@ -107,23 +107,28 @@ jobs:
   #     run: |
   #       rebot -d report -o "output_pub.xml" -l "log_pub.html" -r "report_pub.html" --merge report/output_01.xml
     
-  # read_report:
-  #   runs-on: windows-latest
-  #   needs: [build, test_func01, test_func02]
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #   - name: Install dependencies
-  #     run: |
-  #       python -m pip install --upgrade pip
-  #       pip install pandas
-  #       pip install python-dotenv
-  #       pip install elementpath
-  #       pip install DateTime
-  #       pip install python-time
+  read_report:
+    runs-on: windows-latest
+    needs: [build, test_func01, test_func02]
+    steps:
+    - uses: actions/checkout@v2
+    - name: setup python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10' # install the python version needed
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pandas
+        pip install python-dotenv
+        pip install elementpath
+        pip install DateTime
+        pip install python-time
 
-  #   - name: read report
-  #     run: |
-  #       python python_function/python.py
+    - name: read report
+      run: |
+        python ${{ github.workspace }}/python_function/python.py
 
     # - name: Send report to Slack
     #   if: always()
